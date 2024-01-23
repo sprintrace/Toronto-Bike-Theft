@@ -1,5 +1,7 @@
 library(opendatatoronto)
 library(dplyr)
+library(tidyverse)
+library(sf)
 
 # get package
 package <- show_package("neighbourhood-crime-rates")
@@ -13,8 +15,7 @@ datastore_resources <- filter(resources, tolower(format) %in% c('csv', 'geojson'
 
 # load the first datastore resource as a sample
 data <- filter(datastore_resources, row_number()==1) |> get_resource()
-data
+data<-dplyr::select(as.data.frame(data),-geometry)## = take everything but the spacial component. we removed the geometry. 
 
+write.csv(data, "data.csv", row.names=FALSE) ## save to CSV format
 
-
-write.csv(data, "inputs/data/biketheftdata.csv", row.names=FALSE) ## save to CSV format

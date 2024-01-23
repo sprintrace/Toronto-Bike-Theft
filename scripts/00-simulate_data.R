@@ -40,3 +40,6 @@ simulated_theft_data$year |> max() == 2023 ## is 2023 the maximum year within th
 simulated_theft_data$thefts |> min() >= 10 ## is minimum thefts 10 within the simulated data
 simulated_theft_data$thefts |> max() <=100 ## is minimum thefts 10 within the simulated data
 simulated_theft_data$thefts |> class() == "numeric" ## testing that the result is a number instead of a text or other output. 
+
+##
+

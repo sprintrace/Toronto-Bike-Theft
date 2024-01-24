@@ -4,7 +4,7 @@
 ## lets go back to the original DATA??
 
 # Select variables that start with "neighbourhood" or "thefts"
-
+ 
 library(tidyr)
 library(tidyverse)
 

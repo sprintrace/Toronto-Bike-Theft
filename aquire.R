@@ -16,6 +16,12 @@ selected_vars = as.data.frame(selected_vars)## code to drop geometry variable
 # Display the selected variables
 glimpse(selected_vars)
 
+## new code Bastion got this to resolve the issue with the render
+
+### original code was if ("geometry" %in% colnames(selected_vars)) {
+  selected_vars <- selected_vars[, !colnames(selected_vars) %in% "geometry"]
+  print("Geometry column removed.")
+
 
 
 # Reshape data from wide to long format
@@ -73,4 +79,3 @@ plot <- ggplot(area_data2, aes(x = year, y = value, color = AREA_NAME)) +
 
 plot
 
-## add table for total both areas seperate 

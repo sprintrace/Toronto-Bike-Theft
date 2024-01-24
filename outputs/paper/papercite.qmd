@@ -6,7 +6,7 @@ format:
   pdf: 
     toc: true
 editor: visual
-
+ 
 execute:
   echo: false 
 ---
@@ -51,6 +51,8 @@ glimpse(selected_vars)
 ```
 
 ```{r}
+## below is new code from Bastion
+source('../../Bikes Progress soph 01-22.R')
 
 #label: (this is how you refer to the text) (citations) 
 #fig-cap: (title for the graph)

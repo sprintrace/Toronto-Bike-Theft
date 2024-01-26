@@ -2,17 +2,17 @@
 title: "Bike thefts in Toronto: Diffrences by neighbourhood type"
 author: "Michael Shmelev"
 bibliography: citations.bib
-format: pdf
+format:
 pdf: in
-toc: true
-fig-pos: H
+  toc: true
+  fig-pos: H
 editor: visual
 
 execute:
   echo: FALSE 
 ---
 
-```{r, include =FALSE}
+```{r, include=FALSE}
 library(tidyr)
 library(tidyverse)
 library(here)
@@ -100,6 +100,15 @@ One very important concern is the reliability of Open Data Toronto when it comes
 # Conclusion
 
 In conclusion, this study seeks to understand how theft rates differ between urban and suburban areas in Toronto. The analysis of ten geographic areas spanning from 2014 to 2023 supports the hypothesis that urbanized areas experience higher levels of bike theft compared to suburban counterparts. The findings reveal intriguing trends, including a notable drop in urban theft rates in 2019, a resurgence post-2020, and consistent suburban increases, particularly during the 2020 COVID-19 lockdowns. The stark numerical contrast in stolen bikes between downtown areas and suburban regions underscores the severity of the issue in urban centers. It is also clear that further research and a broader scope of data would benefit research for bike theft.
+
+```{r}
+#| include: false
+#| warning: false
+#| message: false
+## below is new code from Bastion
+
+
+```
 
 Code and repo can be found following: https://github.com/sprintrace/Toronto-Bike-Theft
 

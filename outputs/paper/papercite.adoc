@@ -1,41 +1,20 @@
----
-title: "Bike thefts in Toronto: Diffrences by neighbourhood type"
-author: "Michael Shmelev"
-bibliography: citations.bib
-format: pdf
-pdf: in
-toc: true
-fig-pos: H
-editor: visual
+= Bike thefts in Toronto: Diffrences by neighbourhood type
+Michael Shmelev
+:toc:
 
-execute:
-  echo: FALSE 
----
+Theft can have a serious impact on a person’s quality of life quality. This paper intends to find out how rates of theft differ between suburban areas and cities. To do this 10 geographic areas are examined from open data Toronto’s collected data on various crime statistics in the 2014-2023 time span. Five of these are in the downtown core, while the other five are located in the Beaches and Danforth suburban area east of the downtown core. The findings from organizing data and comparing the two region types supports the hypothesis that more urbanized areas have a higher level of bike theft compared to suburban areas.
 
-```{r, include =FALSE}
-library(tidyr)
-library(tidyverse)
-library(here)
-```
-
-```{r}
-long_format_data <- read.csv(here::here("outputs/data/long_data.csv"))
-
-```
-
-Theft can have a serious impact on a person's quality of life quality. This paper intends to find out how rates of theft differ between suburban areas and cities. To do this 10 geographic areas are examined from open data Toronto’s collected data on various crime statistics in the 2014-2023 time span. Five of these are in the downtown core, while the other five are located in the Beaches and Danforth suburban area east of the downtown core. The findings from organizing data and comparing the two region types supports the hypothesis that more urbanized areas have a higher level of bike theft compared to suburban areas.
-
-# Introduction
+== Introduction
 
 In Toronto crimes such as theft have always been a daily factor of life, as in any other large city. This paper is about examining the occurrence of bike theft in urban and suburban areas in Toronto, and determining if the hypothesis of there being more theft in urban cities over suburban ones is true. The data analyzed specifically examined bike theft, to the exclusion of other crimes recorded by residents living in Toronto. The findings were that there is more bike theft in downtown Toronto when compared to the suburbs east of the downtown core. By focusing on bike thefts a clear gap is being filled as this is a crime that is often overlooked and underestimated on account of comparison to more high profile crimes such as automobile theft.
 
 Within 2014-2023 Toronto police has reported 34659 bike thefts through all of Toronto’s neigbourhoods (CITE).
 
-By researching and evaluating bike theft crime, the intention is to raise awareness to bike theft prominence as an important issue. Bike usage is crucial to the life of a city, as bikes fill a gap left by accessible to many in the city. Furthermore, the bike is a means to democratize Canadians' freedom to move throught the city as an alternative to cars. By having a prominent alternative to cars, bikes provide not only more access to movement through the city, but also open opportunities for income earning by being able to travel further or use the bike as part of the job(CITE).
+By researching and evaluating bike theft crime, the intention is to raise awareness to bike theft prominence as an important issue. Bike usage is crucial to the life of a city, as bikes fill a gap left by accessible to many in the city. Furthermore, the bike is a means to democratize Canadians’ freedom to move throught the city as an alternative to cars. By having a prominent alternative to cars, bikes provide not only more access to movement through the city, but also open opportunities for income earning by being able to travel further or use the bike as part of the job(CITE).
 
 The paper writing and research process follows the plan, simulate, acquire, explore, and share structure. This involves roughly planning out what kind of research and metrics are desirable to observe, creating tests and boundaries for the variables, obtaining and cleaning the data, exploring the data, and sharing the results with the audience.
 
-# Data
+== Data
 
 The data examined in the paper is bike theft between the urban Toronto core, and the eastern suburbs in Toronto. The analysis focuses on the Yonge-Bay Corridor, Annex, University, Kensington-Chinatown, and Downtown Yonge East for the five downtown core neighborhoods. The east Toronto suburbs examined were Danforth, The Beaches, East End-Danforth, Danforth East York, and the Woodbine Corridor. These areas were located in the Open Data Toronto file, and identified on Google maps in order to ensure that they were all close to proximity with one another and fit the suburbs or urban center classifications.
 
@@ -43,53 +22,21 @@ The dataset that was used in this paper was the 2014-2023 crime statistics for T
 
 Open data Toronto is a source that is maintained by the Toronto government, meaning that it is the most reliable and up to date resource available with regards to crime statistics. The dataset used for the research was collected and documented by the Toronto city police, and includes various crime types along with number of occurrences, neighborhood, and years. The published data spans from 2014 to 2023, representing 10 years of recorde. The source has a gold grade, and a 100% score. The score is based on multiple factors which were all scored at a 100% grade. These factors are Is the dataset up-to-date?Is the data well described? Is the data easy to access for different kinds of users? Is there lots of missing data? How easy is it to work with the data? (CITE). The Neighbourhood Crime Rates scores a perfect score in all of these categories.
 
-# Results
+== Results
 
 The key findings were that theft rates in urban Toronto were going up in almost all areas until 2019, where they made a great drop. However these rates of bike theft are once more growing to pre 2020 level with the exception of University.
 
 These findings differ from the findings for Toronto’s eastern suburbs. In the suburban Toronto areas examined, the theft rate increased and was consistently growing before and during the covid-19 lockdowns in 2020.
 
-```{r, echo = FALSE}
-urban_list<- c("Yonge-Bay Corridor", "Annex", "University", "Kensington-Chinatown", "Downtown Yonge East")
+image:papercite_files/figure-asciidoctor/unnamed-chunk-3-1.png[papercite_files/figure-asciidoctor/unnamed-chunk-3-1]
 
-# area_data[area %in% urban_list, ] ## restricting to only look at URBAN AREAS
-
-area_data1 <- filter(long_format_data, AREA_NAME %in% urban_list)
-
-plot <- ggplot(area_data1, aes(x = year, y = value, color = AREA_NAME)) +
-  geom_line() + 
-  labs(colour="Area Name", x ="Year", y="Thefts")
-
-
-plot
-
-```
-
-```{r}
-
-#| echo: false
-
-#label: (this is how you refer to the text) (citations) 
-#fig-cap: (title for the graph)
-
-suburban_list<- c("Danforth", "The Beaches", "East End-Danforth", "Danforth East York", "Woodbine Corridor")
-
-# area_data[area %in% urban_list, ] ## restricting to only look at URBAN AREAS
-
-area_data2 <- filter(long_format_data, AREA_NAME %in% suburban_list)
-
-plot <- ggplot(area_data2, aes(x = year, y = value, color = AREA_NAME)) +
-  geom_line()+ 
-  labs(colour="Area Name", x ="Year", y="Thefts")
-
-plot
-```
+image:papercite_files/figure-asciidoctor/unnamed-chunk-4-1.png[papercite_files/figure-asciidoctor/unnamed-chunk-4-1]
 
 What really stood out was the sheer numbers difference when comparing the amount of stolen bikes between the urban core, and the suburban east. The downtown areas had significantly higher theft rates than the suburban area. The highest rate of theft for the suburban area was 89 compared to the highest urban bike theft number over 250. Another feature is that bike thefts during the covid lockdowns in Toronto, which happened in 2020, impacted theft in different ways. Theft increased in the suburban areas through 2020, which is contrasted by the sharp decrease of theft in the urban core during the 2020 year. It can be speculated that this decrease in the urban core was due to stricter enforcement of lockdown policies, but proper research should be conducted before making any claims.
 
 If these results are reliable, the research suggests that bike theft in urban areas is climbing back to pre 2019 rates, whereas suburban bike theft rates are declining after incremental growth and a surge in 2020 and 2021.
 
-# Discussion
+== Discussion
 
 While answering the initial question of if suburban areas or urban areas experience more bike theft, some interesting findings and concerns were made along the way. While the graphs and data dictate that theft is higher in urban areas, further research needs to be done as to why numbers decreased in 2019 - 2021. The most obvious explanation is Covid-19 lockdowns and mandates affected the amount of bikes available in the city to be stolen, but this needs to be further explored with more research. Other considerations are that perhaps transit improvements affected the number of bike thefts by getting people to use transit over cycling, but this claim still needs some examination.
 
@@ -97,12 +44,19 @@ Furthermore, it would be interesting to explore cycling accessibility and employ
 
 One very important concern is the reliability of Open Data Toronto when it comes to the 2023 data. The data in the 2023 theft for suburban areas is substantially lower than the 2022 and 2021 data. This raises the question of validity regarding the 2023 sample. The concern is that the 2023 data might have been recorded part way through the year, instead of in December 2023 or January 2024. If this is true, assumptions will need to be reconsidered regarding the current data and conclusions.
 
-# Conclusion
+== Conclusion
 
 In conclusion, this study seeks to understand how theft rates differ between urban and suburban areas in Toronto. The analysis of ten geographic areas spanning from 2014 to 2023 supports the hypothesis that urbanized areas experience higher levels of bike theft compared to suburban counterparts. The findings reveal intriguing trends, including a notable drop in urban theft rates in 2019, a resurgence post-2020, and consistent suburban increases, particularly during the 2020 COVID-19 lockdowns. The stark numerical contrast in stolen bikes between downtown areas and suburban regions underscores the severity of the issue in urban centers. It is also clear that further research and a broader scope of data would benefit research for bike theft.
 
 Code and repo can be found following: https://github.com/sprintrace/Toronto-Bike-Theft
 
-[@citeR]
+(R Core Team 2021)
 
-[@tellingstories]
+(Alexander 2023)
+
+[[refs]]
+[[ref-tellingstories]]
+Alexander, Rohan. 2023. _Telling Stories with Data_. Chapman; Hall/CRC. https://tellingstorieswithdata.com.
+
+[[ref-citeR]]
+R Core Team. 2021. _R: A Language and Environment for Statistical Computing_. Vienna, Austria: R Foundation for Statistical Computing. https://www.R-project.org/.

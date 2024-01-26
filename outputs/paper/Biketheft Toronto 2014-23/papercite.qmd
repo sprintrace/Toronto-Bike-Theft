@@ -2,7 +2,7 @@
 title: "Bike thefts in Toronto: Diffrences by neighbourhood type"
 author: "Michael Shmelev"
 bibliography: citations.bib
-format: pdf
+format: pdf 
 pdf: in
 toc: true
 fig-pos: H

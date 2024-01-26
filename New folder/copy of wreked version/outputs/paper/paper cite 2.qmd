@@ -1,0 +1,83 @@
+---
+title: "paper cite 2"
+format: html
+editor: visual
+---
+
+------------------------------------------------------------------------
+
+```{r}
+library(tidyr)
+library(tidyverse)
+```
+
+```{r}
+##execute:      ## code to hide code add all sources to citation.bib ## add code chunks for graphs
+  ##echo: false ## code to hide code
+```
+
+```{r}
+##makeitwork<- read.csv("biketheftdata.csv")
+```
+
+```{r}
+library(readr)
+
+library(opendatatoronto)
+library(dplyr)
+
+# get package
+package <- show_package("neighbourhood-crime-rates")
+package
+
+# get all resources for this package
+resources <- list_package_resources("neighbourhood-crime-rates")
+
+# identify datastore resources; by default, Toronto Open Data sets datastore resource format to CSV for non-geospatial and GeoJSON for geospatial resources
+datastore_resources <- filter(resources, tolower(format) %in% c('csv', 'geojson'))
+
+# load the first datastore resource as a sample
+data <- filter(datastore_resources, row_number()==1) |> get_resource()
+data
+
+selected_vars <- data %>%
+  select(matches("^Biketheft_[0-9]"), AREA_NAME,)
+
+selected_vars = as.data.frame(selected_vars)## code to drop geometry variable
+selected_vars = selected_vars %>% select(-geometry)
+# Display the selected variables
+glimpse(selected_vars)
+```
+
+```{r}
+
+#label: (this is how you refer to the text) (citations) 
+#fig-cap: (title for the graph)
+
+suburban_list<- c("Danforth", "The Beaches", "East End-Danforth", "Danforth East York", "Woodbine Corridor")
+
+# area_data[area %in% urban_list, ] ## restricting to only look at URBAN AREAS
+
+area_data2 <- filter(long_format_data, AREA_NAME %in% suburban_list)
+
+plot <- ggplot(area_data2, aes(x = year, y = value, color = AREA_NAME)) +
+  geom_line()
+
+plot
+
+```
+
+```{r}
+urban_list <- c("Yonge-Bay Corridor", "Annex", "University", "Kensington-Chinatown", "Downtown Yonge East")
+
+# area_data[area %in% urban_list, ] ## restricting to only look at URBAN AREAS
+
+area_data1 <- filter(long_format_data, AREA_NAME %in% urban_list)
+
+plot <- ggplot(area_data1, aes(x = year, y = value, color = AREA_NAME)) +
+  geom_line()
+
+# Print the plot
+print(plot)
+
+```
